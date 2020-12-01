@@ -15,6 +15,7 @@ public class AdventOfCode {
         String day1File = "day1.txt";
 
         System.out.println("------------------------------");
-        System.out.println("AdventOfCode day 01 part 2 : " + day1.multiplyPairForExpectedSum(puzzle.readInput(day1File), 2020));
+        System.out.println("AdventOfCode day 01 part 1 : " + day1.multiplyPairForExpectedSum(puzzle.readInput(day1File), 2020L, 2));
+        System.out.println("AdventOfCode day 01 part 2 : " + day1.multiplyPairForExpectedSum(puzzle.readInput(day1File), 2020L, 3));
     }
 }

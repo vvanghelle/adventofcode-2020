@@ -21,24 +21,43 @@ public class Day1Test {
     }
 
     @Test
-    public void findPairsThatSumsTo_shouldReturnCorrectPair() {
+    public void findPairsThatSumsTo_shouldReturnCorrectPairFor2Entries() {
         Stream<String> inputs = Stream.of("1721", "979", "366", "299", "675", "1456");
 
-        List<Pair<Long, Long>> pairs = day1.findPairsThatSumsTo(inputs, 2020);
+        List<List<Long>> pairs = day1.findPairsThatSumsTo(inputs, 2020L, 2);
 
         assertThat(pairs).isNotNull().hasSize(1);
         assertThat(pairs.get(0)).isNotNull();
-
-        List<Long> pairNumber = Arrays.asList(pairs.get(0).getRight(), pairs.get(0).getLeft());
-        assertThat(pairNumber).contains(1721l, 299l);
+        assertThat(pairs.get(0)).contains(1721L, 299L);
     }
 
     @Test
-    public void multiplyPairForExpectedSum() {
+    public void multiplyPairForExpectedSum_for2Entries() {
         Stream<String> inputs = Stream.of("1721", "979", "366", "299", "675", "1456");
 
-        Long multiplicationResult = day1.multiplyPairForExpectedSum(inputs, 2020);
+        Long multiplicationResult = day1.multiplyPairForExpectedSum(inputs, 2020L, 2);
 
         assertThat(multiplicationResult).isNotNull().isEqualTo(514579l);
+    }
+
+
+    @Test
+    public void findPairsThatSumsTo_shouldReturnCorrectPairFor3Entries() {
+        Stream<String> inputs = Stream.of("1721", "979", "366", "299", "675", "1456");
+
+        List<List<Long>> pairs = day1.findPairsThatSumsTo(inputs, 2020L, 3);
+
+        assertThat(pairs).isNotNull().hasSize(1);
+        assertThat(pairs.get(0)).isNotNull();
+        assertThat(pairs.get(0)).contains(979L, 366L, 675L);
+    }
+
+    @Test
+    public void multiplyPairForExpectedSum_for3Entries() {
+        Stream<String> inputs = Stream.of("1721", "979", "366", "299", "675", "1456");
+
+        Long multiplicationResult = day1.multiplyPairForExpectedSum(inputs, 2020L, 3);
+
+        assertThat(multiplicationResult).isNotNull().isEqualTo(241861950L);
     }
 }
