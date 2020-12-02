@@ -27,5 +27,6 @@ public class AdventOfCode {
 
         System.out.println("------------------------------");
         System.out.println("AdventOfCode day 02 part 1 : " + day2.computePart1(puzzle.readInput(day1File)));
+        System.out.println("AdventOfCode day 02 part 1 : " + day2.computePart2(puzzle.readInput(day1File)));
     }
 }

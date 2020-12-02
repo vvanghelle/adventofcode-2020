@@ -7,7 +7,7 @@ public class PasswordWithPolicy {
 
     private int minOccurence;
     private int maxOccurence;
-    private String charToOccur;
+    private char charToOccur;
     private String pwd;
 
 
@@ -22,13 +22,27 @@ public class PasswordWithPolicy {
         this.minOccurence = Integer.valueOf(occurences[0]);
         this.maxOccurence = Integer.valueOf(occurences[1]);
 
-        this.charToOccur = splittedEntry[1].substring(0, splittedEntry[1].length()-1);
+        this.charToOccur = splittedEntry[1].substring(0, splittedEntry[1].length()-1).charAt(0);
 
         this.pwd = splittedEntry[2];
     }
 
-    public boolean isValid() {
+    public boolean isValidPolicy1() {
         int occurence = StringUtils.countMatches(this.pwd, this.charToOccur);
         return occurence >= this.minOccurence && occurence <= this.maxOccurence;
+    }
+
+    public boolean isValidPolicy2() {
+        boolean isPosition1Valid = this.isCharAtPositionValid(this.minOccurence);
+        boolean isPosition2Valid = this.isCharAtPositionValid(this.maxOccurence);
+        return isPosition1Valid ^ isPosition2Valid;
+    }
+
+    private boolean isCharAtPositionValid(int position) {
+        try{
+            return this.pwd.charAt(position-1) ==  this.charToOccur;
+        } catch (StringIndexOutOfBoundsException e ){
+            return false;
+        }
     }
 }
