@@ -33,9 +33,9 @@ public class Day1Test {
     public void multiplyPairForExpectedSum_for2Entries() {
         Stream<String> inputs = Stream.of("1721", "979", "366", "299", "675", "1456");
 
-        Long multiplicationResult = day1.multiplyPairForExpectedSum(inputs, 2020L, 2);
+        String multiplicationResult = day1.multiplyPairForExpectedSum(inputs, 2020L, 2);
 
-        assertThat(multiplicationResult).isNotNull().isEqualTo(514579L);
+        assertThat(multiplicationResult).isNotNull().isEqualTo("514579");
     }
 
 
@@ -54,8 +54,8 @@ public class Day1Test {
     public void multiplyPairForExpectedSum_for3Entries() {
         Stream<String> inputs = Stream.of("1721", "979", "366", "299", "675", "1456");
 
-        Long multiplicationResult = day1.multiplyPairForExpectedSum(inputs, 2020L, 3);
+        String multiplicationResult = day1.multiplyPairForExpectedSum(inputs, 2020L, 3);
 
-        assertThat(multiplicationResult).isNotNull().isEqualTo(241861950L);
+        assertThat(multiplicationResult).isNotNull().isEqualTo("241861950");
     }
 }

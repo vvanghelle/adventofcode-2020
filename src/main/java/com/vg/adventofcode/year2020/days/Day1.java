@@ -1,5 +1,8 @@
 package com.vg.adventofcode.year2020.days;
 
+import com.vg.adventofcode.year2020.Day;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,12 +12,23 @@ import java.util.stream.Stream;
 /**
  * https://adventofcode.com/2020/day/1
  */
-public class Day1 {
+@Component
+public class Day1 implements Day {
+
+    @Override
+    public String computePart1(Stream<String> inputs) {
+        return multiplyPairForExpectedSum(inputs, 2020L, 2);
+    }
+
+    @Override
+    public String computePart2(Stream<String> inputs) {
+        return multiplyPairForExpectedSum(inputs, 2020L, 3);
+    }
 
     /**
      * Step 1 get pairs that sum to expected sum. nbEntriesToSum is >= 2.
      */
-    public List<List<Long>> findPairsThatSumsTo(Stream<String> inputs, Long expectedSum, int nbEntriesToSum) {
+    List<List<Long>> findPairsThatSumsTo(Stream<String> inputs, Long expectedSum, int nbEntriesToSum) {
         List<Long> inputAsLong = inputs.map(Long::valueOf).collect(Collectors.toList());
         return recursiveSumWithSublist(0L, expectedSum, inputAsLong, nbEntriesToSum);
     }
@@ -22,9 +36,9 @@ public class Day1 {
     /**
      * Step 2 multiply first pair result.
      */
-    public Long multiplyPairForExpectedSum(Stream<String> inputs, Long expectedSum, int nbEntriesToSum) {
+    String multiplyPairForExpectedSum(Stream<String> inputs, Long expectedSum, int nbEntriesToSum) {
         List<List<Long>> pairs = findPairsThatSumsTo(inputs, expectedSum, nbEntriesToSum);
-        return (pairs == null || pairs.isEmpty()) ? null : pairs.get(0).stream().reduce((l, l2) -> l * l2).get();
+        return (pairs == null || pairs.isEmpty()) ? null : String.valueOf(pairs.get(0).stream().reduce((l, l2) -> l * l2).get());
     }
 
     private List<List<Long>> recursiveSumWithSublist(Long currentSumResult, Long expectedSum, List<Long> remainingEntries, int nbEntriesToSum) {
