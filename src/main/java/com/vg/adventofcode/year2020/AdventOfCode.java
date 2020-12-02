@@ -4,10 +4,19 @@ import com.vg.adventofcode.year2020.days.Day1;
 import com.vg.adventofcode.year2020.days.Day2;
 import com.vg.adventofcode.year2020.days.Day3;
 import com.vg.adventofcode.year2020.lib.Puzzle;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-public class AdventOfCode {
+@SpringBootApplication
+public class AdventOfCode  implements CommandLineRunner {
 
     public static void main(String[] args) throws Exception {
+        SpringApplication.run(AdventOfCode.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
         Puzzle puzzle = new Puzzle();
         executeDay1(puzzle);
         executeDay2(puzzle);
