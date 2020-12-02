@@ -19,10 +19,10 @@ public class Day2Test {
 
     @Test
     public void subMethod() {
-        Stream<String> inputs = Stream.of("1721", "979", "366", "299", "675", "1456");
+        Stream<String> inputs = Stream.of("1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc");
 
-        String result = day2.stubMethod(inputs);
+        int result = day2.computePart1(inputs);
 
-        assertThat(result).isNotNull().isEqualTo("TODO");
+        assertThat(result).isNotNull().isEqualTo(2);
     }
 }
