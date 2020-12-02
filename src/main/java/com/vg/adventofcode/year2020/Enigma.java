@@ -6,6 +6,14 @@ import java.util.stream.Stream;
 
 public interface Enigma {
 
+    int getEnigmaDay();
+
+    @LogExecutionTime
+    String computePart1();
+
+    @LogExecutionTime
+    String computePart2();
+
     @LogExecutionTime
     String computePart1(Stream<String> inputs);
 

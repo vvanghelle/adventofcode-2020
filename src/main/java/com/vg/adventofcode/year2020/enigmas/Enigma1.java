@@ -1,6 +1,5 @@
 package com.vg.adventofcode.year2020.enigmas;
 
-import com.vg.adventofcode.year2020.Enigma;
 import com.vg.adventofcode.year2020.utils.LogExecutionTime;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +13,7 @@ import java.util.stream.Stream;
  * https://adventofcode.com/2020/day/1
  */
 @Component
-public class Enigma1 implements Enigma {
+public class Enigma1 extends AbstractEnigma {
 
     @Override
     @LogExecutionTime
@@ -34,14 +33,6 @@ public class Enigma1 implements Enigma {
     List<List<Long>> findPairsThatSumsTo(Stream<String> inputs, Long expectedSum, int nbEntriesToSum) {
         List<Long> inputAsLong = inputs.map(Long::valueOf).collect(Collectors.toList());
         return recursiveSumWithSublist(0L, expectedSum, inputAsLong, nbEntriesToSum);
-    }
-
-    /**
-     * Step 2 multiply first pair result.
-     */
-    String multiplyPairForExpectedSum(Stream<String> inputs, Long expectedSum, int nbEntriesToSum) {
-        List<List<Long>> pairs = findPairsThatSumsTo(inputs, expectedSum, nbEntriesToSum);
-        return (pairs == null || pairs.isEmpty()) ? null : String.valueOf(pairs.get(0).stream().reduce((l, l2) -> l * l2).get());
     }
 
     private List<List<Long>> recursiveSumWithSublist(Long currentSumResult, Long expectedSum, List<Long> remainingEntries, int nbEntriesToSum) {
@@ -67,5 +58,18 @@ public class Enigma1 implements Enigma {
             }
             return result;
         }
+    }
+
+    /**
+     * Step 2 multiply first pair result.
+     */
+    String multiplyPairForExpectedSum(Stream<String> inputs, Long expectedSum, int nbEntriesToSum) {
+        List<List<Long>> pairs = findPairsThatSumsTo(inputs, expectedSum, nbEntriesToSum);
+        return (pairs == null || pairs.isEmpty()) ? null : String.valueOf(pairs.get(0).stream().reduce((l, l2) -> l * l2).get());
+    }
+
+    @Override
+    public int getEnigmaDay() {
+        return 1;
     }
 }
