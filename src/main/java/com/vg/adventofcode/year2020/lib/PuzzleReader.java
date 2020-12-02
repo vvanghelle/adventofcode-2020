@@ -9,7 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-public class Puzzle {
+public class PuzzleReader {
 
     public Stream<String> readInput(String filename) throws IOException, URISyntaxException, NullPointerException {
         ClassLoader cl = getClass().getClassLoader();

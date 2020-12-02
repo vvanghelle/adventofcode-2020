@@ -1,8 +1,8 @@
-package com.vg.adventofcode.year2020.days;
+package com.vg.adventofcode.year2020.enigmas;
 
 
-import com.vg.adventofcode.year2020.days.day2.PasswordPolicy1;
-import com.vg.adventofcode.year2020.days.day2.PasswordPolicy2;
+import com.vg.adventofcode.year2020.enigmas.enigma2.PasswordPolicy1;
+import com.vg.adventofcode.year2020.enigmas.enigma2.PasswordPolicy2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,14 +10,14 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Day2Test {
+public class Enigma2Test {
 
-    private Day2 day2;
+    private Enigma2 day2;
 
     @BeforeEach
     public void init() {
         // test should be directly with PasswordPolicy1 or PasswordPolicy2..
-        day2 = new Day2(new PasswordPolicy1(), new PasswordPolicy2());
+        day2 = new Enigma2(new PasswordPolicy1(), new PasswordPolicy2());
     }
 
     @Test

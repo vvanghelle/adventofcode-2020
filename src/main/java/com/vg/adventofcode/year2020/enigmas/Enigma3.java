@@ -1,6 +1,7 @@
-package com.vg.adventofcode.year2020.days;
+package com.vg.adventofcode.year2020.enigmas;
 
-import com.vg.adventofcode.year2020.Day;
+import com.vg.adventofcode.year2020.Enigma;
+import com.vg.adventofcode.year2020.utils.LogExecutionTime;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.Stream;
@@ -9,14 +10,16 @@ import java.util.stream.Stream;
  * https://adventofcode.com/2020/day/3
  */
 @Component
-public class Day3 implements Day {
+public class Enigma3 implements Enigma {
 
     @Override
+    @LogExecutionTime
     public String computePart1(Stream<String> inputs) {
         return "todo";
     }
 
     @Override
+    @LogExecutionTime
     public String computePart2(Stream<String> inputs) {
         return "todo";
     }

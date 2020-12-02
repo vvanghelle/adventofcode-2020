@@ -1,9 +1,10 @@
-package com.vg.adventofcode.year2020.days;
+package com.vg.adventofcode.year2020.enigmas;
 
-import com.vg.adventofcode.year2020.Day;
-import com.vg.adventofcode.year2020.days.day2.PasswordEntry;
-import com.vg.adventofcode.year2020.days.day2.PasswordPolicy1;
-import com.vg.adventofcode.year2020.days.day2.PasswordPolicy2;
+import com.vg.adventofcode.year2020.Enigma;
+import com.vg.adventofcode.year2020.enigmas.enigma2.PasswordEntry;
+import com.vg.adventofcode.year2020.enigmas.enigma2.PasswordPolicy1;
+import com.vg.adventofcode.year2020.enigmas.enigma2.PasswordPolicy2;
+import com.vg.adventofcode.year2020.utils.LogExecutionTime;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +17,7 @@ import java.util.stream.Stream;
  */
 @Component
 @RequiredArgsConstructor
-public class Day2 implements Day {
+public class Enigma2 implements Enigma {
 
     final PasswordPolicy1 policy1;
     final PasswordPolicy2 policy2;
@@ -25,6 +26,7 @@ public class Day2 implements Day {
      * Step 1 : check nb of password are valid with policy nb 1;
      */
     @Override
+    @LogExecutionTime
     public String computePart1(Stream<String> inputs) {
         List<PasswordEntry> pwds = inputs.map(PasswordEntry::new)
                 .filter(policy1::isValid)
@@ -36,6 +38,7 @@ public class Day2 implements Day {
      * Step 2 : check nb of password are valid with policy nb 2;
      */
     @Override
+    @LogExecutionTime
     public String computePart2(Stream<String> inputs) {
         List<PasswordEntry> pwds = inputs.map(PasswordEntry::new)
                 .filter(policy2::isValid)

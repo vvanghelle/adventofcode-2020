@@ -1,6 +1,6 @@
 package com.vg.adventofcode.year2020;
 
-import com.vg.adventofcode.year2020.lib.Puzzle;
+import com.vg.adventofcode.year2020.lib.PuzzleReader;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,9 +10,9 @@ import java.util.Map;
 @SpringBootApplication
 public class AdventOfCode implements CommandLineRunner {
 
-    final Map<String, Day> days;
+    final Map<String, Enigma> days;
 
-    public AdventOfCode(Map<String, Day> days) {
+    public AdventOfCode(Map<String, Enigma> days) {
         this.days = days;
     }
 
@@ -22,18 +22,18 @@ public class AdventOfCode implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Puzzle puzzle = new Puzzle();
-        executeDay(1, puzzle);
-        executeDay(2, puzzle);
-        executeDay(3, puzzle);
+        PuzzleReader puzzleReader = new PuzzleReader();
+        executeDay(1, puzzleReader);
+        executeDay(2, puzzleReader);
+        executeDay(3, puzzleReader);
     }
 
-    private void executeDay(int dayNumber, Puzzle puzzle) throws Exception {
-        Day day = days.get("day" + dayNumber);
-        String dayFile = "day" + dayNumber + ".txt";
+    private void executeDay(int dayNumber, PuzzleReader puzzleReader) throws Exception {
+        Enigma enigma = days.get("enigma" + dayNumber);
+        String enigmaFile = "enigma" + dayNumber + ".txt";
 
         System.out.println("------------------------------");
-        System.out.println("AdventOfCode day " + dayNumber + " part 1 : " + day.computePart1(puzzle.readInput(dayFile)));
-        System.out.println("AdventOfCode day " + dayNumber + " part 2 : " + day.computePart2(puzzle.readInput(dayFile)));
+        System.out.println("---- AdventOfCode day " + dayNumber + " part 1 : " + enigma.computePart1(puzzleReader.readInput(enigmaFile)));
+        System.out.println("---- AdventOfCode day " + dayNumber + " part 2 : " + enigma.computePart2(puzzleReader.readInput(enigmaFile)));
     }
 }

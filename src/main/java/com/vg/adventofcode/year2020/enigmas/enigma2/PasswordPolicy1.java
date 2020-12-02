@@ -1,4 +1,4 @@
-package com.vg.adventofcode.year2020.days.day2;
+package com.vg.adventofcode.year2020.enigmas.enigma2;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;

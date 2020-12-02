@@ -1,4 +1,4 @@
-package com.vg.adventofcode.year2020.days;
+package com.vg.adventofcode.year2020.enigmas;
 
 
 import org.junit.jupiter.api.BeforeEach;
@@ -9,13 +9,13 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Day1Test {
+public class Enigma1Test {
 
-    private Day1 day1;
+    private Enigma1 day1;
 
     @BeforeEach
     public void init() {
-        day1 = new Day1();
+        day1 = new Enigma1();
     }
 
     @Test
