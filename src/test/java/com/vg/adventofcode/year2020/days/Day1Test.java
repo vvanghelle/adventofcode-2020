@@ -1,11 +1,9 @@
 package com.vg.adventofcode.year2020.days;
 
 
-import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -37,7 +35,7 @@ public class Day1Test {
 
         Long multiplicationResult = day1.multiplyPairForExpectedSum(inputs, 2020L, 2);
 
-        assertThat(multiplicationResult).isNotNull().isEqualTo(514579l);
+        assertThat(multiplicationResult).isNotNull().isEqualTo(514579L);
     }
 
 

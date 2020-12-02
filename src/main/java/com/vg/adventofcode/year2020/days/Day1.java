@@ -19,8 +19,16 @@ public class Day1 {
         return recursiveSumWithSublist(0L, expectedSum, inputAsLong, nbEntriesToSum);
     }
 
-    public List<List<Long>> recursiveSumWithSublist(Long currentSumResult, Long expectedSum, List<Long> remainingEntries, int nbEntriesToSum) {
-        if (nbEntriesToSum == 1) {
+    /**
+     * Step 2 multiply first pair result.
+     */
+    public Long multiplyPairForExpectedSum(Stream<String> inputs, Long expectedSum, int nbEntriesToSum) {
+        List<List<Long>> pairs = findPairsThatSumsTo(inputs, expectedSum, nbEntriesToSum);
+        return (pairs == null || pairs.isEmpty()) ? null : pairs.get(0).stream().reduce((l, l2) -> l * l2).get();
+    }
+
+    private List<List<Long>> recursiveSumWithSublist(Long currentSumResult, Long expectedSum, List<Long> remainingEntries, int nbEntriesToSum) {
+        if (nbEntriesToSum <= 1) {
             // no more recursive call
             List<Long> eligibleEntries = remainingEntries.stream().filter(entry -> (currentSumResult + entry) == expectedSum).collect(Collectors.toList());
             return eligibleEntries.isEmpty() ? Collections.emptyList() : Collections.singletonList(eligibleEntries);
@@ -32,7 +40,6 @@ public class Day1 {
                         expectedSum,
                         remainingEntries.stream().skip(i + 1).collect(Collectors.toList()),
                         nbEntriesToSum - 1);
-                ;
                 result.addAll(
                         addableEntries.stream().map(entries -> {
                             List<Long> tmpResult = new ArrayList<>();
@@ -43,14 +50,5 @@ public class Day1 {
             }
             return result;
         }
-
-    }
-
-    /**
-     * multiply first pair result.
-     */
-    public Long multiplyPairForExpectedSum(Stream<String> inputs, Long expectedSum, int nbEntriesToSum) {
-        List<List<Long>> pairs = findPairsThatSumsTo(inputs, expectedSum, nbEntriesToSum);
-        return (pairs == null || pairs.isEmpty()) ? null : pairs.get(0).stream().reduce((l, l2) -> l * l2).get();
     }
 }
