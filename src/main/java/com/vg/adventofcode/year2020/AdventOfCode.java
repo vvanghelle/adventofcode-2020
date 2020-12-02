@@ -2,6 +2,7 @@ package com.vg.adventofcode.year2020;
 
 import com.vg.adventofcode.year2020.days.Day1;
 import com.vg.adventofcode.year2020.days.Day2;
+import com.vg.adventofcode.year2020.days.Day3;
 import com.vg.adventofcode.year2020.lib.Puzzle;
 
 public class AdventOfCode {
@@ -10,6 +11,7 @@ public class AdventOfCode {
         Puzzle puzzle = new Puzzle();
         executeDay1(puzzle);
         executeDay2(puzzle);
+        executeDay3(puzzle);
     }
 
     private static void executeDay1(Puzzle puzzle) throws Exception {
@@ -28,5 +30,13 @@ public class AdventOfCode {
         System.out.println("------------------------------");
         System.out.println("AdventOfCode day 02 part 1 : " + day2.computePart1(puzzle.readInput(day1File)));
         System.out.println("AdventOfCode day 02 part 1 : " + day2.computePart2(puzzle.readInput(day1File)));
+    }
+
+    private static void executeDay3(Puzzle puzzle) throws Exception {
+        Day3 day3 = new Day3();
+        String day1File = "day3.txt";
+
+        System.out.println("------------------------------");
+        System.out.println("AdventOfCode day 03 part 1 : " + day3.computePart1(puzzle.readInput(day1File)));
     }
 }
