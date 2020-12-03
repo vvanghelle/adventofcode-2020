@@ -17,7 +17,7 @@ public class EnigmaLoggerAspect {
 
         long executionTime = System.currentTimeMillis() - start;
 
-        System.out.println("* " + joinPoint.getSignature().getDeclaringType().getSimpleName() + "." + joinPoint.getSignature().getName() + " executed in : " + executionTime + " ms");
+        System.out.println("* " + joinPoint.getSignature().getName() + " executed in : " + executionTime + " ms");
         return proceed;
     }
 }
