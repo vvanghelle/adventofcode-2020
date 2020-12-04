@@ -10,6 +10,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class Enigma3Test {
 
+    private static final String[] TREES_SAMPLE = {"..##.......",
+            "#...#...#..",
+            ".#....#..#.",
+            "..#.#...#.#",
+            ".#...##..#.",
+            "..#.##.....",
+            ".#.#.#....#",
+            ".#........#",
+            "#.##...#...",
+            "#...##....#",
+            ".#..#...#.#"};
+
     private Enigma3 day3;
 
     @BeforeEach
@@ -19,17 +31,7 @@ public class Enigma3Test {
 
     @Test
     public void computePart1_withEntryList() {
-        Stream<String> inputs = Stream.of("..##.......",
-                "#...#...#..",
-                ".#....#..#.",
-                "..#.#...#.#",
-                ".#...##..#.",
-                "..#.##.....",
-                ".#.#.#....#",
-                ".#........#",
-                "#.##...#...",
-                "#...##....#",
-                ".#..#...#.#");
+        Stream<String> inputs = Stream.of(TREES_SAMPLE);
 
         String result = day3.computePart1(inputs);
 
@@ -37,17 +39,7 @@ public class Enigma3Test {
     }
     @Test
     public void computePart2_withEntryList() {
-        Stream<String> inputs = Stream.of("..##.......",
-                "#...#...#..",
-                ".#....#..#.",
-                "..#.#...#.#",
-                ".#...##..#.",
-                "..#.##.....",
-                ".#.#.#....#",
-                ".#........#",
-                "#.##...#...",
-                "#...##....#",
-                ".#..#...#.#");
+        Stream<String> inputs = Stream.of(TREES_SAMPLE);
 
         String result = day3.computePart2(inputs);
 

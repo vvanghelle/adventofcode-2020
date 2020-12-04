@@ -29,7 +29,8 @@ public class Enigma3 extends AbstractEnigma {
                 new int[]{3, 1},
                 new int[]{5, 1},
                 new int[]{7, 1},
-                new int[]{1, 2}};
+                new int[]{1, 2}
+        };
 
         long currentMultiplicationResult = 1;
 
