@@ -19,19 +19,11 @@ public class Enigma5Test {
 
     @Test
     public void computePart1_withEntryList() {
-        Stream<String> inputs = Stream.of("");
+        Stream<String> inputs = Stream.of("BFFFBBFRRR", "FFFBBBFRRR", "BBFFBBFRLL");
 
         String result = day5.computePart1(inputs);
 
-        assertThat(result).isNotNull().isEqualTo("todo");
+        assertThat(result).isNotNull().isEqualTo("820");
     }
 
-    @Test
-    public void computePart2_withEntryList() {
-        Stream<String> inputs = Stream.of("");
-
-        String result = day5.computePart2(inputs);
-
-        assertThat(result).isNotNull().isEqualTo("todo");
-    }
 }
