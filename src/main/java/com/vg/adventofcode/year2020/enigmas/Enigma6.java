@@ -1,32 +1,44 @@
 package com.vg.adventofcode.year2020.enigmas;
 
-import com.vg.adventofcode.year2020.enigmas.enigma5.Seat;
+import com.vg.adventofcode.year2020.enigmas.enigma6.FormAnswersBuilder;
+import com.vg.adventofcode.year2020.enigmas.enigma6.Group;
 import com.vg.adventofcode.year2020.utils.LogExecutionTime;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Stream;
 
 /**
  * https://adventofcode.com/2020/day/5
  */
-@Component 
+@Component
+@NoArgsConstructor
+@AllArgsConstructor
 public class Enigma6 extends AbstractEnigma {
+
+    @Autowired
+    private FormAnswersBuilder builder;
+
 
     @Override
     @LogExecutionTime
     public String computePart1(Stream<String> inputs) {
-        return "todo";
+        List<Group> answers = builder.getGroupAnswers(inputs);
+        Optional<Integer> sum = answers.stream().map(group -> group.getAnsweredResponseSize()).reduce((size1, size2) -> size1 + size2);
+        return String.valueOf(sum.get());
     }
 
     @Override
     @LogExecutionTime
     public String computePart2(Stream<String> inputs) {
-        return "todo";
+        List<Group> answers = builder.getGroupAnswers(inputs);
+        Optional<Integer> sum = answers.stream().map(group -> group.getAnsweredResponseSize()).reduce((size1, size2) -> size1 + size2);
+        return String.valueOf(sum.get());
     }
 
     @Override
