@@ -29,7 +29,7 @@ public class Enigma6 extends AbstractEnigma {
     @LogExecutionTime
     public String computePart1(Stream<String> inputs) {
         List<Group> answers = builder.getGroupAnswers(inputs);
-        Optional<Integer> sum = answers.stream().map(group -> group.getAnsweredResponseSize()).reduce((size1, size2) -> size1 + size2);
+        Optional<Long> sum = answers.stream().map(Group::getAnsweredResponseSize).reduce((size1, size2) -> size1 + size2);
         return String.valueOf(sum.get());
     }
 
@@ -37,7 +37,7 @@ public class Enigma6 extends AbstractEnigma {
     @LogExecutionTime
     public String computePart2(Stream<String> inputs) {
         List<Group> answers = builder.getGroupAnswers(inputs);
-        Optional<Integer> sum = answers.stream().map(group -> group.getAnsweredResponseSize()).reduce((size1, size2) -> size1 + size2);
+        Optional<Long> sum = answers.stream().map(Group::getAllAnsweredResponseSize).reduce((size1, size2) -> size1 + size2);
         return String.valueOf(sum.get());
     }
 

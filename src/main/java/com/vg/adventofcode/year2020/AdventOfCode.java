@@ -29,13 +29,11 @@ public class AdventOfCode implements CommandLineRunner {
 
     private void executeDay(int dayNumber) {
         Enigma enigma = days.get("enigma" + dayNumber);
-        System.out.println("\n------------------------------ AdventOfCode day " + dayNumber + "\n");
         if (enigma != null) {
+            System.out.println("\n------------------------------ AdventOfCode day " + dayNumber + "\n");
             System.out.println("  part 1 result : " + enigma.computePart1());
             System.out.println();
             System.out.println("  part 2 result : " + enigma.computePart2());
-        } else {
-            System.out.println("--- No implementation for this day");
         }
     }
 }

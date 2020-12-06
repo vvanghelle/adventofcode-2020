@@ -20,6 +20,7 @@ public class FormAnswersBuilder {
                 groupAnswers.add(currentGroup.get());
                 currentGroup.set(new Group());
             } else {
+                currentGroup.get().addMember();
                 for (int i = 0; i < input.length(); i++) {
                     currentGroup.get().addAnswer(String.valueOf(input.charAt(i)));
                 }

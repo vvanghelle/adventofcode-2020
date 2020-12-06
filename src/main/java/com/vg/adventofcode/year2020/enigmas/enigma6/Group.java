@@ -2,30 +2,39 @@ package com.vg.adventofcode.year2020.enigmas.enigma6;
 
 import lombok.Data;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
 
 @Data
 public class Group {
 
-    Set<String> answers;
+    HashMap<String, Integer> answers;
     private int size;
 
-    public Group() {
+    Group() {
         this.size = 0;
-        this.answers = new HashSet<>();
+        this.answers = new HashMap<>();
     }
 
-    public Group(int size, Set<String> answers) {
-        this.size = size;
-        this.answers = answers;
+    void addAnswer(String answer) {
+        int nbAnswer = 0;
+        if (this.answers.containsKey(answer)) {
+            nbAnswer = this.answers.get(answer);
+        }
+        this.answers.put(answer, ++nbAnswer);
     }
 
-    public void addAnswer(String answer) {
-        this.answers.add(answer);
+    void addMember() {
+        this.size++;
     }
 
-    public int getAnsweredResponseSize(){
-        return this.answers.size();
+    public long getAnsweredResponseSize() {
+        return this.answers.keySet().size();
+    }
+
+    public long getAllAnsweredResponseSize() {
+        return this.answers.entrySet()
+                .stream()
+                .filter(e -> (e.getValue() == this.size))
+                .count();
     }
 }
