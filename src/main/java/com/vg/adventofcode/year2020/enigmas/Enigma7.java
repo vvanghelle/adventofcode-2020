@@ -23,7 +23,7 @@ public class Enigma7 extends AbstractEnigma {
     @LogExecutionTime
     public String computePart1(Stream<String> inputs) {
         Map<String, Map<String, Integer>> colors = builder.getBagColorRules(inputs);
-        List<String> searchContainerForBag = Arrays.asList("shiny gold");
+        List<String> searchContainerForBag = Collections.singletonList("shiny gold");
         Set<String> possibilities = new HashSet<>();
         while (!searchContainerForBag.isEmpty()){
             Set<String> possibilitiesForCurrentSearch = new HashSet<>();
@@ -34,13 +34,10 @@ public class Enigma7 extends AbstractEnigma {
                         .map(Map.Entry::getKey)
                         .collect(Collectors.toList()));
             }
-         //   System.out.println(possibilitiesForCurrentSearch);
             possibilities.addAll(possibilitiesForCurrentSearch);
 
             searchContainerForBag = new ArrayList<>(possibilitiesForCurrentSearch);
         }
-        // System.out.println("--");
-        // System.out.println(possibilities);
         return String.valueOf(possibilities.size());
     }
 
@@ -48,18 +45,23 @@ public class Enigma7 extends AbstractEnigma {
     @LogExecutionTime
     public String computePart2(Stream<String> inputs) {
         Map<String, Map<String, Integer>> colors = builder.getBagColorRules(inputs);
-        List<String> searchContainedInBag = Arrays.asList("shiny gold");
-        Set<String> possibilities = new HashSet<>();
+        List<String> searchContainedInBag = Collections.singletonList("shiny gold");
+        long nbBags = 0;
         while (!searchContainedInBag.isEmpty()){
-            Set<String> possibilitiesForCurrentSearch = new HashSet<>();
+            List<String> possibilitiesForCurrentSearch = new ArrayList<>();
             for (String searchedColor : searchContainedInBag){
                 Map<String, Integer> containedBags = colors.get(searchedColor);
+                for (Map.Entry<String, Integer> e: containedBags.entrySet()){
+                    nbBags+=e.getValue();
+                    for (int i = 0; i < e.getValue(); i++){
+                        possibilitiesForCurrentSearch.add(e.getKey());
+                    }
+                }
             }
-
-            possibilities.addAll(possibilitiesForCurrentSearch);
-
+            searchContainedInBag = possibilitiesForCurrentSearch;
         }
-        return "todo";
+
+        return String.valueOf(nbBags);
     }
 
     @Override
