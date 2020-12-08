@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * https://adventofcode.com/2020/day/5
+ * https://adventofcode.com/2020/day/7
  */
 @Component
 @RequiredArgsConstructor

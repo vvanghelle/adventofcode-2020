@@ -14,7 +14,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 /**
- * https://adventofcode.com/2020/day/5
+ * https://adventofcode.com/2020/day/6
  */
 @Component
 @NoArgsConstructor
