@@ -16,31 +16,29 @@ import java.util.stream.Stream;
 
 @Component
 public class BagRuleBuilder {
+    private final static Pattern COLOR_PATTERN = Pattern.compile("^(.*) bags contain (.*)\\.");
+    private final static Pattern CONTAINED_BAGS_PATTERN = Pattern.compile("([0-9]+) ([a-z]+ [a-z]+) bags?[, ]?");
 
     public Map<String, Map<String, Integer>> getBagColorRules(Stream<String> inputs) {
-        return inputs
-                .collect(Collectors.toMap((r) -> r.substring(0, r.indexOf("bags")).trim(), r -> r))
-                .entrySet()
-                .stream()
-                .collect(Collectors.toMap(
+        return inputs.map(this::parseWithRegex).collect(
+                Collectors.toMap(
                         Map.Entry::getKey,
-                        en -> parseContent(en.getValue())));
+                        Map.Entry::getValue));
     }
 
-    private Map<String, Integer> parseContent(String r) {
-        Map<String, Integer> container = new HashMap<>();
-        Pattern pattern = Pattern.compile("^([0-9]+) ([a-z]+ [a-z]+) bags?\\.?");
+    private Map.Entry<String, Map<String, Integer>> parseWithRegex(String s){
+        String bagColor = "";
+        Map<String, Integer> containedBags = new HashMap<>();
 
-        String sub = r.substring(r.indexOf("contain ")+8);
-        String[] contained = sub.split(", ");
-
-        for (int i = 0; i < contained.length; i++){
-            Matcher m = pattern.matcher(contained[i]);
-            if (m.find()){
-                container.put(m.group(2), Integer.parseInt(m.group(1)));
+        Matcher colorMatcher = COLOR_PATTERN.matcher(s);
+        if (colorMatcher.find()){
+            bagColor = colorMatcher.group(1);
+            Matcher contentMatcher = CONTAINED_BAGS_PATTERN.matcher(colorMatcher.group(2));
+            while(contentMatcher.find()){
+                containedBags.put(contentMatcher.group(2), Integer.valueOf(contentMatcher.group(1)));
             }
         }
-        return container;
+        return Map.entry(bagColor, containedBags);
     }
 
 }
